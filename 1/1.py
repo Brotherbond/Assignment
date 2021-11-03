@@ -14,9 +14,9 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # sklearn package for machine learning in python:
+from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split 
 from sklearn.linear_model import LinearRegression
-from sklearn.datasets import make_regression
 from sklearn.metrics import mean_squared_error, r2_score
 
 
@@ -33,8 +33,9 @@ create a grid of pairplot but that would be too much as there are so mnay variab
 '''
 
 # reading houseprice_data into pandas dataframe
-
 houseprice_data = pd.read_csv("./houseprice_data.csv")
+
+print(houseprice_data.describe())
 print(houseprice_data.head())
 
 #Missing values check
@@ -43,13 +44,12 @@ print(houseprice_data.isnull().sum()) #result shows no missing values
 #Check the structure of dataset
 print(houseprice_data.dtypes)
 
-#Columns of dataset
-print(houseprice_data.columns)
-
 #visualising the correlationamong various columns of the dataset
 plt.figure(figsize= (10,10), dpi=100)
 sns.heatmap(houseprice_data.corr())
 
+#Columns of dataset
+print(houseprice_data.columns)
 
 #selecting all columns except price as independent variables or features for multiple regression
 X = houseprice_data.loc[:, houseprice_data.columns !='price']
@@ -63,6 +63,10 @@ print(y)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 1/3, 
 		random_state=10)
 
+# Feature Scaling
+sc_X = StandardScaler()
+X_train = sc_X.fit_transform(X_train)
+X_test= sc_X.transform(X_test)
 
 
 
