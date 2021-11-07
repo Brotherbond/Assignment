@@ -60,19 +60,31 @@ print(y)
 
 # split the data into training and test sets with random state set at 20
 #test set at 1/3 of the data population.
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 1/3, 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 0.6, 
 		random_state=10)
-
-# Feature Scaling
-sc_X = StandardScaler()
-X_train = sc_X.fit_transform(X_train)
-X_test= sc_X.transform(X_test)
-
 
 
 # fit the linear least-squres regression line to the training data:
 regr = LinearRegression()
 regr.fit(X_train, y_train)
+Y_pred= regr.predict(X_test)
+
+# Visualising results: Training set
+#plt.scatter(X_train, Y_train)
+plt.plot(X_train, regr.predict(X_train),color='red')
+plt.title('Salary vs Experience (Training set results)')
+plt.xlabel('Years of Experience')
+plt.ylabel('Salary')
+plt.show()
+
+# Visualising results: Test set
+#plt.scatter(X_test, Y_test)
+plt.plot(X_train, regr.predict(X_train),color='blue')
+plt.title('Salary vs Experience (Test set results)')
+plt.xlabel('Years of Experience')
+plt.ylabel('Salary')
+plt.show()
+
 
 # The coefficients
 print('Coefficients: ', regr.coef_)
@@ -81,8 +93,13 @@ print('Intercept: ', regr.intercept_)
 # The mean squared error
 print('Mean squared error: %.8f'
 	% mean_squared_error(y_test, regr.predict(X_test)))
-# The mean squared error
-print('Coefficient of determination: %.2f'
-	% r2_score(y_test, regr.predict(X_test)))
+
+# The accuracy of our model
+print('Coefficient of determination: %.8f'
+	% r2_score(y_test, Y_pred))
+
+# The accuracy of our model
+print('Coefficient of determination: %.8f'
+	% regr.score(X, y))
 
 

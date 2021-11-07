@@ -1,0 +1,53 @@
+• How the model was constructed:
+– description of the algorithms used and how they were implemented in python,
+– clarity of the program(s), are there appropriate comments, is it easy to use?
+– demonstrate how you can start with simple models and work up to more complex
+and better performing models,
+– analyse of performance and comparison. (60%)
+• Any possible visualisation that could be used to help the client understand the model
+better. (Remember the client is not necessarily an AI/Data Science expert!) (20%)
+• Analyse of the data, can you make any recommendations to the client? (20%)
+
+
+
+
+
+
+
+Multiple Linear regression (MLR):
+a statistical modelling approach that could be used type for predictive analysis, like simple linear regression (SLR) is used to show relationship
+between values of a dataset. Unlike SLR, which shows between two variables, MLR tends to use more than 
+one independent variable hence showing relationship between multiple independent variables against a targeted point
+ or column of interest
+
+
+
+Data preprocessing this invovles 
+1. importing useful libraries such as numpy, pandas matplotlib,seaborn, and sklearn,
+2. importing the dataset under consideration.
+3. Data Cleaning which invloves removing of duplicates, replacement of missing values or removal of affected rows if any.
+4. Data conversion in case of categorical values
+5. Scaling in case where values are eitehr too large or far appropriate.
+StandardScaler in scikit library, readjust the distribution to have a mean value 0 and standard deviation of 1
+6. Splitting dataset into train and test sets. Selecting at random, the dataset can be
+be divided in ratio usually with test set taking 0.2-0.33 of the dataset while 
+the rest, train set is used in training the model.
+
+Fitting MLR to the Training set and Predicting the Test set results:
+1.  The dataset is divided between test and train in the ratio 1 to 5 to afford more data point for train considerating the data size.
+2. varying the random state has little effect on the r2-score, best at around 10, hence it can be said that they are closely related
+3. Using scikit package, linear least-squres regression line is being fitted to the training data then used to predict target values for the test set.
+
+
+Data Analysis:
+1. the coefficient shows the relationship of individual independent variable to the target. Only 7 of the independent variables are negatively related to the target i.e. price.
+2. An accuracy of 71% was observed 
+
+
+***
+repeating d same analyse without least gives better Result
+
+Result Interpretation:
+
+Suggestion/Conclusion:
+prediction
