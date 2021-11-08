@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Importing Dataset
-dataset = pd.read_csv('./2/country_data.csv')
+dataset = pd.read_csv('Shopping_center.csv')
 X = dataset.iloc[:, [3,4]].values
 
 # Elbow Method
