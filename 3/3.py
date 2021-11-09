@@ -12,12 +12,6 @@ import matplotlib.pyplot as plt # MATLAB-like way of plotting
 import seaborn as sns
 
 
-# sklearn package for machine learning in python:
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split 
-
-
-
 '''Data preprocessing: Loading & Cleaning
 '''
 
