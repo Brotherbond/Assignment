@@ -48,58 +48,75 @@ print(houseprice_data.dtypes)
 plt.figure(figsize= (10,10), dpi=100)
 sns.heatmap(houseprice_data.corr())
 
-#Columns of dataset
-print(houseprice_data.columns)
-
-#selecting all columns except price as independent variables or features for multiple regression
-X = houseprice_data.loc[:, houseprice_data.columns !='price']
-print(X)
-y= houseprice_data['price']
-print(y)
 
 
+def testLinearRegression(X):
+    
 # split the data into training and test sets with random state set at 20
-#test set at 1/3 of the data population.
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 0.6, 
-		random_state=10)
-
+#test set at 1/5 of the data population.
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 0.2, 
+                                                        random_state=10)
 
 # fit the linear least-squres regression line to the training data:
-regr = LinearRegression()
-regr.fit(X_train, y_train)
-Y_pred= regr.predict(X_test)
+    regr = LinearRegression()
+    regr.fit(X_train, y_train)
+    Y_pred= regr.predict(X_test)
 
 # Visualising results: Training set
 #plt.scatter(X_train, Y_train)
-plt.plot(X_train, regr.predict(X_train),color='red')
-plt.title('Salary vs Experience (Training set results)')
-plt.xlabel('Years of Experience')
-plt.ylabel('Salary')
-plt.show()
+    plt.plot(X_train, regr.predict(X_train),color='red')
+    plt.title('House Features vs House Price (Training set results)')
+    plt.xlabel('House Price')
+    plt.ylabel('House Features')
+    plt.show()
 
 # Visualising results: Test set
 #plt.scatter(X_test, Y_test)
-plt.plot(X_train, regr.predict(X_train),color='blue')
-plt.title('Salary vs Experience (Test set results)')
-plt.xlabel('Years of Experience')
-plt.ylabel('Salary')
-plt.show()
+    plt.plot(X_train, regr.predict(X_train),color='blue')
+    plt.title('House Features vs House Price (Test set results)')
+    plt.xlabel('House Price')
+    plt.ylabel('House Features')
+    plt.show()
 
 
 # The coefficients
-print('Coefficients: ', regr.coef_)
+    print('Coefficients: ', regr.coef_)
 # The intercept
-print('Intercept: ', regr.intercept_)
+    print('Intercept: ', regr.intercept_)
 # The mean squared error
-print('Mean squared error: %.8f'
-	% mean_squared_error(y_test, regr.predict(X_test)))
+    print('Mean squared error: %.8f'
+          % mean_squared_error(y_test, regr.predict(X_test)))
 
 # The accuracy of our model
-print('Coefficient of determination: %.8f'
-	% r2_score(y_test, Y_pred))
+    print('Coefficient of determination: %.8f'
+          % r2_score(y_test, Y_pred))
 
 # The accuracy of our model
-print('Coefficient of determination: %.8f'
-	% regr.score(X, y))
+    print('Coefficient of determination: %.8f'
+          % regr.score(X, y))
+
+    
+
+#Columns of dataset
+length = len(houseprice_data.columns)
+print(length)
+
+y= houseprice_data['price'] # using lower y to denote dependent variable, house price
+print(y)
+
+#selecting all columns except price as independent variables or features for multiple regression
+X = houseprice_data.loc[:, houseprice_data.columns !='price']
+
+
+#repeating the same analysis without longitude, latitude and zipcode which 
+#can be easily ignored
+columns = list(range(1, length-5))
+columns_after = [length-2,length-1]
+columns.extend(columns_after)
+interested_columns=  np.array(columns)
+
+X = houseprice_data.iloc[:, interested_columns].values
+print(X)
+
 
 
