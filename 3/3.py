@@ -23,6 +23,8 @@ print(nba_rookie_data.head())
 
 #Missing values check
 print(nba_rookie_data.isnull().sum()) # only '3 point Percent' has 11 missing values
+nba_rookie_data.dropna(inplace=True) #Removerows with missing values
+print(nba_rookie_data.isnull().sum()) 
 
 #Check the structure of dataset
 print(nba_rookie_data.dtypes)
@@ -35,12 +37,12 @@ sns.heatmap(nba_rookie_data.corr())
 length = len(nba_rookie_data.columns)
 print(length)
 
-X = nba_rookie_data.iloc[:, range(length-4, length-1)].values # excluding the last column
+X = nba_rookie_data.iloc[:, range(1, length-1)].values # excluding the last column
 Y = nba_rookie_data.iloc[:, -1].values
 
 # Split dataset into train and test set
 from sklearn.model_selection import train_test_split
-X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.25,random_state=0)
+X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.90,random_state=0)
 
 # Feature Scaling
 from sklearn.preprocessing import StandardScaler
