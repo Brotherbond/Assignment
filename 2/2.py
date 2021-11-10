@@ -49,6 +49,7 @@ for i in range(1, 11):
     kmeans = KMeans(n_clusters=i, init='k-means++', n_init=10, max_iter=300, random_state=0)
     kmeans.fit(X)
     wcss.append(kmeans.inertia_)
+plt.figure()
 plt.plot(range(1,11), wcss)
 plt.title('Elbow Method')
 plt.xlabel('Number of Clusters')

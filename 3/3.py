@@ -23,7 +23,7 @@ print(nba_rookie_data.head())
 
 #Missing values check
 print(nba_rookie_data.isnull().sum()) # only '3 point Percent' has 11 missing values
-nba_rookie_data.dropna(inplace=True) #Removerows with missing values
+nba_rookie_data.dropna(inplace=True) #Remove rows with missing values
 print(nba_rookie_data.isnull().sum()) 
 
 #Check the structure of dataset

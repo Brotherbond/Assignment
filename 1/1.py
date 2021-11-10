@@ -63,15 +63,16 @@ def testLinearRegression(X):
     Y_pred= regr.predict(X_test)
 
 # Visualising results: Training set
-#plt.scatter(X_train, Y_train)
+    #plt.scatter(X_train, y_train)
+    plt.figure()
     plt.plot(X_train, regr.predict(X_train),color='red')
     plt.title('House Features vs House Price (Training set results)')
     plt.xlabel('House Price')
     plt.ylabel('House Features')
     plt.show()
-
+    
 # Visualising results: Test set
-#plt.scatter(X_test, Y_test)
+    #plt.scatter(X_test, Y_test)
     plt.plot(X_train, regr.predict(X_train),color='blue')
     plt.title('House Features vs House Price (Test set results)')
     plt.xlabel('House Price')
