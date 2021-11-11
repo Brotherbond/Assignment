@@ -43,7 +43,7 @@ Y = nba_rookie_data.iloc[:, -1].values
 
 # Split dataset into train and test set
 from sklearn.model_selection import train_test_split
-X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.40,random_state=0)
+X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.20,random_state=0)
 
 # Feature Scaling
 from sklearn.preprocessing import StandardScaler
@@ -92,8 +92,8 @@ class Neural_Network(object):
     def __init__(self, Lambda=0):        
         #Define Hyperparameters
         self.inputLayerSize = 19
-        self.outputLayerSize = 1
-        self.hiddenLayerSize = 19
+        self.outputLayerSize = 19
+        self.hiddenLayerSize =19
         
         #Weights (parameters)
         self.W1 = np.random.randn(self.inputLayerSize,self.hiddenLayerSize)
@@ -201,4 +201,4 @@ class trainer(object):
         
 NN = Neural_Network(Lambda=0.0001)        
 T = trainer(NN)
-T.train(X_train, X_test, Y_train, Y_test )
+T.train(X_train[0], X_test[0], Y_train[0], Y_test[0] )
