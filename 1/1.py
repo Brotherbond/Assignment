@@ -10,7 +10,6 @@ import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import matplotlib.pyplot as plt # MATLAB-like way of plotting
 import seaborn as sns
-get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # sklearn package for machine learning in python:
