@@ -14,10 +14,10 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # sklearn package for machine learning in python:
-from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split 
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
+
 
 
 
@@ -95,6 +95,7 @@ def testLinearRegression(X):
 # The accuracy of our model
     print('Coefficient of determination: %.8f'
           % regr.score(X, y))
+    
 
     
 

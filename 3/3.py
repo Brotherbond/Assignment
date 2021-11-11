@@ -74,6 +74,9 @@ var_prob[0, :]
 from sklearn.metrics import confusion_matrix
 cm_lr = confusion_matrix(Y_test, Y_pred_lr)
 
+from sklearn.metrics import accuracy_score
+print(accuracy_score(Y_test,Y_pred_lr))
+
 
 
 
@@ -88,6 +91,10 @@ Y_pred_nb = classifier.predict(X_test)
 # Confusion Matrix
 from sklearn.metrics import confusion_matrix
 cm_nb = confusion_matrix(Y_test, Y_pred_nb)
+
+from sklearn.metrics import accuracy_score
+print(accuracy_score(Y_test,Y_pred_nb))
+
 
 
 
@@ -201,13 +208,45 @@ class Neural_Network(object):
         dJdW1, dJdW2 = self.costFunctionPrime(X, y)
         return np.concatenate((dJdW1.ravel(), dJdW2.ravel()))
     
+def computeNumericalGradient(N, X, y):
+        paramsInitial = N.getParams()
+        numgrad = np.zeros(paramsInitial.shape)
+        perturb = np.zeros(paramsInitial.shape)
+        e = 1e-4
 
+        for p in range(len(paramsInitial)):
+            #Set perturbation vector
+            perturb[p] = e
+            N.setParams(paramsInitial + perturb)
+            loss2 = N.costFunction(X, y)
+            
+            N.setParams(paramsInitial - perturb)
+            loss1 = N.costFunction(X, y)
+
+            #Compute Numerical Gradient
+            numgrad[p] = (loss2 - loss1) / (2*e)
+
+            #Return the value we changed to zero:
+            perturb[p] = 0
+            
+        #Return Params to original value:
+        N.setParams(paramsInitial)
+
+        return numgrad 
+        
 #Regularization Parameter:
 Lambda = 0.0001 
         
 NN = Neural_Network(Lambda)
 T = trainer(NN)
 T.train(X_train, X_test, Y_train, Y_test)
+
+#Make sure our gradients our correct after making changes:
+numgrad = computeNumericalGradient(NN, X, Y)
+grad = NN.computeGradients(X,Y)
+
+#Should be less than 1e-8:
+#norm(grad-numgrad)/norm(grad+numgrad)
 
 
 
