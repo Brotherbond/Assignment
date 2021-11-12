@@ -13,6 +13,11 @@ import seaborn as sns
 from scipy.optimize import minimize
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neural_network import MLPClassifier
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -43,59 +48,67 @@ sns.heatmap(nba_rookie_data.corr())
 length = len(nba_rookie_data.columns)
 print(length)
 
-X = nba_rookie_data.iloc[:, range(1, length-1)].values # excluding the last column
+def testClassification(X):
+    
+    # Split dataset into train and test set
+    X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.20,random_state=0)
+    #increasing random state reduces the accuracy of naive bayes and a large train dataset gives higher accuracy
+    
+    # Feature Scaling
+    sc = StandardScaler()
+    X_train = sc.fit_transform(X_train)
+    X_test = sc.transform(X_test)
+    
+    
+    #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+    # Fitting Logistic Regression to Training set
+    classifier = LogisticRegression(random_state=0, solver='lbfgs')
+    classifier.fit(X_train, Y_train)
+    
+    # Predicting Test set results
+    Y_pred_lr = classifier.predict(X_test)
+    var_prob = classifier.predict_proba(X_test)
+    var_prob[0, :]
+    
+    # Checking Confusion Matrix and accuracy of the model
+    cm_lr = confusion_matrix(Y_test, Y_pred_lr)
+    print(accuracy_score(Y_test,Y_pred_lr))
+    
+    
+    #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+    # Fitting Naive Bayes Algorithm to Training set
+    classifier = GaussianNB()
+    classifier.fit(X_train, Y_train)
+    
+    # Predicting Test set results
+    Y_pred_nb = classifier.predict(X_test)
+    
+    # Checking Confusion Matrix and accuracy of the model
+    cm_nb = confusion_matrix(Y_test, Y_pred_nb)
+    print(accuracy_score(Y_test,Y_pred_nb))
+    
+    #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
+    neural_network = MLPClassifier(hidden_layer_sizes =(), activation = "logistic", random_state=1, max_iter=2000).fit(X_train, Y_train)
+    neural_network.fit(X_train, Y_train)
+    neural_network.predict_proba(X_test[:1])
+    Y_pred_nn = neural_network.predict(X_test)
+    
+    # Checking Confusion Matrix and accuracy of the model
+    cm_nn = confusion_matrix(Y_test, Y_pred_nn)
+    print(accuracy_score(Y_test,Y_pred_nn))
+    
+    print('Number of mislabled points out of a total %d points: %d' %(X_train.shape[0], (Y_train != neural_network.predict(X_train)).sum()))
+
+
 Y = nba_rookie_data.iloc[:, [-1]].values
+###case 1
+X = nba_rookie_data.iloc[:, range(1, length-4)].values # excluding the last column
+testClassification(X)
 
-# Split dataset into train and test set
-from sklearn.model_selection import train_test_split
-X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.20,random_state=0)
-#increasing random state reduces the accuracy of naive bayes and a large train dataset gives higher accuracy
+###case 2
+X = nba_rookie_data.iloc[:, range(1, length-2)].values # excluding the last column
+testClassification(X)
 
-# Feature Scaling
-from sklearn.preprocessing import StandardScaler
-sc = StandardScaler()
-X_train = sc.fit_transform(X_train)
-X_test = sc.transform(X_test)
-
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
-# Fitting Logistic Regression to Training set
-from sklearn.linear_model import LogisticRegression
-classifier = LogisticRegression(random_state=0, solver='lbfgs')
-classifier.fit(X_train, Y_train)
-
-# Predicting Test set results
-Y_pred_lr = classifier.predict(X_test)
-var_prob = classifier.predict_proba(X_test)
-var_prob[0, :]
-
-# Checking Confusion Matrix and accuracy of the model
-cm_lr = confusion_matrix(Y_test, Y_pred_lr)
-print(accuracy_score(Y_test,Y_pred_lr))
-
-
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
-# Fitting Naive Bayes Algorithm to Training set
-from sklearn.naive_bayes import GaussianNB
-classifier = GaussianNB()
-classifier.fit(X_train, Y_train)
-
-# Predicting Test set results
-Y_pred_nb = classifier.predict(X_test)
-
-# Checking Confusion Matrix and accuracy of the model
-cm_nb = confusion_matrix(Y_test, Y_pred_nb)
-print(accuracy_score(Y_test,Y_pred_nb))
-
-#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
-from sklearn.neural_network import MLPClassifier
-neural_network = MLPClassifier(hidden_layer_sizes =(), activation = "logistic", random_state=1, max_iter=2000).fit(X_train, Y_train)
-neural_network.fit(X_train, Y_train)
-neural_network.predict_proba(X_test[:1])
-Y_pred_nn = neural_network.predict(X_test)
-
-# Checking Confusion Matrix and accuracy of the model
-cm_nn = confusion_matrix(Y_test, Y_pred_nn)
-print(accuracy_score(Y_test,Y_pred_nn))
-
-print('Number of mislabled points out of a total %d points: %d' %(X_train.shape[0], (Y_train != neural_network.predict(X_train)).sum()))
+###case 3
+X = nba_rookie_data.iloc[:, range(1, length-1)].values # excluding the last column
+testClassification(X)
