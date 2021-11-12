@@ -10,15 +10,10 @@ import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import matplotlib.pyplot as plt # MATLAB-like way of plotting
 import seaborn as sns
-
-
 # sklearn package for machine learning in python:
 from sklearn.model_selection import train_test_split 
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
-
-
-
 
 
 '''Data preprocessing: Loading & Cleaning
