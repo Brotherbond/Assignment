@@ -125,12 +125,7 @@ print(length)
 y= houseprice_data['price'] # using lower y to denote dependent variable, house price 
 print(y)
 
-#selecting all columns except price as independent variables or features for multiple regression
-X = houseprice_data.loc[:, houseprice_data.columns !='price']
-print(X)
-testLinearRegression(X)
-
-#repeating the same analysis without longitude, latitude and zipcode which can be easily ignored
+#selecting all columns except price,longitude, latitude and zipcode as independent variables or features for multiple regression
 columns = list(range(1, length-5))
 columns_after = [length-2,length-1]
 columns.extend(columns_after)
@@ -140,5 +135,8 @@ X = houseprice_data.iloc[:, interested_columns]
 testLinearRegression(X)
 print(X)
 
-
+##repeating the same analysis selecting all columns except price as independent variables or features for multiple regression
+X = houseprice_data.loc[:, houseprice_data.columns !='price']
+print(X)
+testLinearRegression(X)
 
