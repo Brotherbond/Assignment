@@ -49,6 +49,9 @@ for i in range(1, 11):
     kmeans = KMeans(n_clusters=i, init='k-means++', n_init=10, max_iter=300, random_state=0)
     kmeans.fit(X)
     wcss.append(kmeans.inertia_)
+    
+# We are interested in finding Elbow point, which is defines the optimal value of k. The scree plot levels off at k=6 this indicate that erros (SSE) is decreasing linearly after this point. 
+#Therefore, we would like to use it to determine the clusters.
 plt.figure()
 plt.plot(range(1,11), wcss)
 plt.title('Elbow Method')
@@ -57,8 +60,9 @@ plt.ylabel('wcss')
 plt.show()
 
 
+
 # fitting kmeans to dataset
-kmeans = KMeans(n_clusters=5, init='k-means++', n_init=10, max_iter=300, random_state=0)
+kmeans = KMeans(n_clusters=6, init='k-means++', n_init=10, max_iter=300, random_state=0)
 Y_kmeans = kmeans.fit_predict(X)
 
 
