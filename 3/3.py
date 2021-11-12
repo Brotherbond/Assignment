@@ -96,7 +96,11 @@ cm_nb = confusion_matrix(Y_test, Y_pred_nb)
 print(accuracy_score(Y_test,Y_pred_nb))
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
-
+from sklearn.neural_network import MLPClassifier
+neural_network = MLPClassifier(random_state=1, max_iter=300).fit(X_train, Y_train)
+neural_network.predict_proba(X_test[:1])
+neural_network.predict(X_test[:5, :])
+neural_network.score(X_test, Y_test)
 
 # Using Neural network to  Dataset
 #using classes
