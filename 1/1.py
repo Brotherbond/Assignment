@@ -71,21 +71,21 @@ def testLinearRegression(X):
         fig1.savefig('LR_initial_plot.png')
 
     # visualise training data set results
-        X_train_i= X_train.iloc[:,i]
-       # X_test_i= X_test.iloc[:,i].values.reshape(1, -1)   
+        X_train_i= np.array(X_train.iloc[:,i])
+        X_test_i= np.array(X_test.iloc[:,i])
         fig2, ax2 = plt.subplots()        
         ax2.scatter(X_train_i, y_train, color='blue')
-        ax2.plot(X_train_i, regr.predict(X_train_i), color='red')
+        ax2.plot(X_train, regr.predict(X_train), color='red')
         ax2.set_xlabel('X')
         ax2.set_ylabel('y')
         fig2.savefig('LR_train_plot.png')
-        # # visualise test data set results
-        # fig3, ax3 = plt.subplots()
-        # ax3.scatter(X_test_i, y_test, color='blue')
-        # ax3.plot(X_test_i, regr.predict(X_test_i), color='red')
-        # ax3.set_xlabel('X')
-        # ax3.set_ylabel('y')
-        # fig3.savefig('LR_test_plot.png')
+        # visualise test data set results
+        fig3, ax3 = plt.subplots()
+        ax3.scatter(X_test_i, y_test, color='blue')
+        ax3.plot(X_test, regr.predict(X_test), color='red')
+        ax3.set_xlabel('X')
+        ax3.set_ylabel('y')
+        fig3.savefig('LR_test_plot.png')
 
 
         
@@ -141,7 +141,7 @@ testLinearRegression(X)
 
 #repeating the same analysis without longitude, latitude and zipcode which can be easily ignored
 X = houseprice_data[houseprice_data.columns.difference(['long','lat','zipcode'])]
-testLinearRegression(X)
+#testLinearRegression(X)
 print(X)
 
 
