@@ -99,4 +99,3 @@ cm_nn = confusion_matrix(Y_test, Y_pred_nn)
 print(accuracy_score(Y_test,Y_pred_nn))
 
 print('Number of mislabled points out of a total %d points: %d' %(X_train.shape[0], (Y_train != neural_network.predict(X_train)).sum()))
-
