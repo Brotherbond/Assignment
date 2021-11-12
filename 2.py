@@ -41,6 +41,9 @@ length = len(country_data.columns)
 print(length)
 
 X = country_data.iloc[:, range(1, length)].values
+#X = country_data.iloc[:, range(1, length-3)].values
+#X = country_data.iloc[:, range(1, length-1)].values
+X = country_data.iloc[:, range(1, length-7)].values
 
 # Elbow Method
 from sklearn.cluster import KMeans
@@ -52,6 +55,7 @@ for i in range(1, 11):
     
 # We are interested in finding Elbow point, which is defines the optimal value of k. The scree plot levels off at k=6 this indicate that erros (SSE) is decreasing linearly after this point. 
 #Therefore, we would like to use it to determine the clusters.
+#X-axis represents the k and Y-axis represents cluster error.
 plt.figure()
 plt.plot(range(1,11), wcss)
 plt.title('Elbow Method')
