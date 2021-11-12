@@ -46,10 +46,6 @@ print(length)
 X = nba_rookie_data.iloc[:, range(1, length-1)].values # excluding the last column
 Y = nba_rookie_data.iloc[:, [-1]].values
 
-#Normalize scaling reduces the number of iterations required
-#X = X/np.amax(X, axis=0)
-#Y = Y/100 #Max test score is 100
-
 # Split dataset into train and test set
 from sklearn.model_selection import train_test_split
 X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.20,random_state=0)
@@ -70,15 +66,12 @@ classifier.fit(X_train, Y_train)
 
 # Predicting Test set results
 Y_pred_lr = classifier.predict(X_test)
-
 var_prob = classifier.predict_proba(X_test)
 var_prob[0, :]
 
 # Checking Confusion Matrix and accuracy of the model
 cm_lr = confusion_matrix(Y_test, Y_pred_lr)
 print(accuracy_score(Y_test,Y_pred_lr))
-
-
 
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
@@ -89,7 +82,6 @@ classifier.fit(X_train, Y_train)
 
 # Predicting Test set results
 Y_pred_nb = classifier.predict(X_test)
-
 
 # Checking Confusion Matrix and accuracy of the model
 cm_nb = confusion_matrix(Y_test, Y_pred_nb)
@@ -251,7 +243,5 @@ grad = NN.computeGradients(X,Y)
 
 #Should be less than 1e-8:
 #norm(grad-numgrad)/norm(grad+numgrad)
-
-
 
 
