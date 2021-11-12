@@ -48,7 +48,7 @@ def testLinearRegression(X):
 # split the data into training and test sets with random state set at 20
 #test set at 1/5 of the data population.
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 0.2, 
-                                                        random_state=10)
+                                                        random_state=100)
 
 # fit the linear least-squres regression line to the training data:
     regr = LinearRegression()
@@ -127,10 +127,16 @@ print(y)
 
 #selecting all columns except price as independent variables or features for multiple regression
 X = houseprice_data.loc[:, houseprice_data.columns !='price']
+print(X)
 testLinearRegression(X)
 
 #repeating the same analysis without longitude, latitude and zipcode which can be easily ignored
-X = houseprice_data[houseprice_data.columns.difference(['long','lat','zipcode'])]
+columns = list(range(1, length-5))
+columns_after = [length-2,length-1]
+columns.extend(columns_after)
+interested_columns=  np.array(columns)
+
+X = houseprice_data.iloc[:, interested_columns]
 testLinearRegression(X)
 print(X)
 
