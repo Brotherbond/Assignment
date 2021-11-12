@@ -89,10 +89,13 @@ print(accuracy_score(Y_test,Y_pred_nb))
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 from sklearn.neural_network import MLPClassifier
-neural_network = MLPClassifier(random_state=1, max_iter=300).fit(X_train, Y_train)
+neural_network = MLPClassifier(hidden_layer_sizes =(), activation = "logistic", random_state=1, max_iter=2000).fit(X_train, Y_train)
+neural_network.fit(X_train, Y_train)
 neural_network.predict_proba(X_test[:1])
 neural_network.predict(X_test[:5, :])
 neural_network.score(X_test, Y_test)
+print('Number of mislabled points out of a total %d points: %d' %(X_train.shape[0], (Y_train != neural_network.predict(X_train)).sum()))
+
 
 # Using Neural network to  Dataset
 #using classes
