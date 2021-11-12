@@ -59,6 +59,37 @@ def testLinearRegression(X):
     regr = LinearRegression()
     regr.fit(X_train, y_train)
     Y_pred= regr.predict(X_test)
+    
+    colors = ['red','cyan','green','blue','magenta','yellow']
+    i=0
+    for  i in range(len(X.columns)-1):
+        # visualise initial data set
+        fig1, ax1 = plt.subplots()        
+        ax1.scatter(X.iloc[:,i].values, y, color=colors[i%6])
+        ax1.set_xlabel('X')
+        ax1.set_ylabel('y')
+        fig1.savefig('LR_initial_plot.png')
+
+    # visualise training data set results
+        X_train_i= X_train.iloc[:,i]
+       # X_test_i= X_test.iloc[:,i].values.reshape(1, -1)   
+        fig2, ax2 = plt.subplots()        
+        ax2.scatter(X_train_i, y_train, color='blue')
+        ax2.plot(X_train_i, regr.predict(X_train_i), color='red')
+        ax2.set_xlabel('X')
+        ax2.set_ylabel('y')
+        fig2.savefig('LR_train_plot.png')
+        # # visualise test data set results
+        # fig3, ax3 = plt.subplots()
+        # ax3.scatter(X_test_i, y_test, color='blue')
+        # ax3.plot(X_test_i, regr.predict(X_test_i), color='red')
+        # ax3.set_xlabel('X')
+        # ax3.set_ylabel('y')
+        # fig3.savefig('LR_test_plot.png')
+
+
+        
+
 
 # Visualising results: Training set
     #plt.scatter(X_train, y_train)
@@ -108,14 +139,8 @@ print(y)
 X = houseprice_data.loc[:, houseprice_data.columns !='price']
 testLinearRegression(X)
 
-#repeating the same analysis without longitude, latitude and zipcode which 
-#can be easily ignored
-columns = list(range(1, length-5))
-columns_after = [length-2,length-1]
-columns.extend(columns_after)
-interested_columns=  np.array(columns)
-
-X = houseprice_data.iloc[:, interested_columns].values
+#repeating the same analysis without longitude, latitude and zipcode which can be easily ignored
+X = houseprice_data[houseprice_data.columns.difference(['long','lat','zipcode'])]
 testLinearRegression(X)
 print(X)
 
