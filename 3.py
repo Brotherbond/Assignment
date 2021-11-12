@@ -59,7 +59,6 @@ def testClassification(X):
     X_train = sc.fit_transform(X_train)
     X_test = sc.transform(X_test)
     
-    
     #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
     # Fitting Logistic Regression to Training set
     classifier = LogisticRegression(random_state=0, solver='lbfgs')
@@ -68,8 +67,7 @@ def testClassification(X):
     # Predicting Test set results
     Y_pred_lr = classifier.predict(X_test)
     var_prob = classifier.predict_proba(X_test)
-    var_prob[0, :]
-    
+       
     # Checking Confusion Matrix and accuracy of the model
     cm_lr = confusion_matrix(Y_test, Y_pred_lr)
     print(accuracy_score(Y_test,Y_pred_lr))
@@ -86,7 +84,7 @@ def testClassification(X):
     # Checking Confusion Matrix and accuracy of the model
     cm_nb = confusion_matrix(Y_test, Y_pred_nb)
     print(accuracy_score(Y_test,Y_pred_nb))
-    
+
     #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
     neural_network = MLPClassifier(hidden_layer_sizes =(), activation = "logistic", random_state=1, max_iter=2000).fit(X_train, Y_train)
     neural_network.fit(X_train, Y_train)
