@@ -1,0 +1,93 @@
+Marks will be awarded based on how well you meet the three criteria:
+• Understanding - In-depth, authoritative, full understanding of key issues with evidence of originality. (4 marks)
+• Depth of knowledge - Key issues analysed, selective source(s) used to support argument/discussion. (3 marks)
+• Structure - Coherent and compelling work logically presented. (3 marks)
+
+
+
+
+Trolley problem:
+
+The trolley problem is a series of thought experiments in ethics and psychology, involving stylized ethical dilemmas of whether to sacrifice one person to save a larger number.
+The series usually begins with a scenario in which a runaway tram or trolley is on course to collide and kill a number of people (traditionally five) down the track, but a driver or bystander can 
+intervene and divert the vehicle to kill just one person on a different track.
+
+Phillipan foote
+
+Personal interest comes in play? Is d 1 man an acquitance? Is the person of known role or value higher than d 5. 
+History tells us people tend 2 protect kings at d detriment of their lives.
+
+Pushing someone 2 death is less likely 2 happen based on personal attachment. Naturally we won't want 2 keep a terrible 
+memory of a lost loved one we happen 2 have inntentionally caused their death
+
+Robots will probably make decision based on d utilitarian view. mitigating the situation.
+
+Attachment will give d single person more value than d 5. THis can also be achieved in robots using weights such 
+It's easier for robots with updated info abt the victims 2 judge d other factors.
+
+Programming robots to think 
+
+it will be based on weight of d human live. A terroist for example if left untouch would lead to more lives being lost.
+At the slightest opprtunity it seems wise to delete such with casuality minimized.
+
+D movie called suvivor. A team of 200 guys were selected 2 leave earth in case an impending collision can't be on earth
+In such situation it's wiser 2 include doctors, teachers n engineers as these carry out essential duties which are 
+necessary for suvival of d suvivors.
+
+Time is a factor too d longer it takes d easier it is 2 switch decision on this.
+
+
+
+magine you're watching a runaway trolley barreling down the tracks straight towards five workers who can't escape. You happen to be standing next to a switch that will divert the trolley onto a second track. Here's the problem. That track has a worker on it, too, but just one. 
+
+
+00:28
+What do you do? Do you sacrifice one person to save five? 
+
+
+00:32
+This is the trolley problem, a version of an ethical dilemma that philosopher Philippa Foot devised in 1967. It's popular because it forces us to think about how to choose when there are no good choices. Do we pick the action with the best outcome or stick to a moral code that prohibits causing someone's death? 
+
+
+00:55
+In one survey, about 90% of respondents said that it's okay to flip the switch, letting one worker die to save five, and other studies, including a virtual reality simulation of the dilemma, have found similar results. 
+
+
+01:11
+These judgments are consistent with the philosophical principle of utilitarianism which argues that the morally correct decision is the one that maximizes well-being for the greatest number of people. The five lives outweigh one, even if achieving that outcome requires condemning someone to death. 
+
+
+01:30
+But people don't always take the utilitarian view, which we can see by changing the trolley problem a bit. 
+
+
+01:37
+This time, you're standing on a bridge over the track as the runaway trolley approaches. Now there's no second track, but there is a very large man on the bridge next to you. If you push him over, his body will stop the trolley, saving the five workers, but he'll die. 
+
+
+01:56
+To utilitarians, the decision is exactly the same, lose one life to save five. But in this case, only about 10% of people say that it's OK to throw the man onto the tracks. Our instincts tell us that deliberately causing someone's death is different than allowing them to die as collateral damage. It just feels wrong for reasons that are hard to explain. 
+
+
+02:20
+This intersection between ethics and psychology is what's so interesting about the trolley problem. The dilemma in its many variations reveal that what we think is right or wrong depends on factors other than a logical weighing of the pros and cons. 
+
+
+02:36
+For example, men are more likely than women to say it's okay to push the man over the bridge. So are people who watch a comedy clip before doing the thought experiment. And in one virtual reality study, people were more willing to sacrifice men than women. 
+
+
+02:52
+Researchers have studied the brain activity of people thinking through the classic and bridge versions. Both scenarios activate areas of the brain involved in conscious decision-making and emotional responses. But in the bridge version, the emotional response is much stronger. So is activity in an area of the brain associated with processing internal conflict. Why the difference? One explanation is that pushing someone to their death feels more personal, activating an emotional aversion to killing another person, but we feel conflicted because we know it's still the logical choice. 
+
+
+03:31
+"Trolleyology" has been criticized by some philosophers and psychologists. They argue that it doesn't reveal anything because its premise is so unrealistic that study participants don't take it seriously. 
+
+
+03:45
+But new technology is making this kind of ethical analysis more important than ever. For example, driver-less cars may have to handle choices like causing a small accident to prevent a larger one. Meanwhile, governments are researching autonomous military drones that could wind up making decisions of whether they'll risk civilian casualties to attack a high-value target. If we want these actions to be ethical, we have to decide in advance how to value human life and judge the greater good. 
+
+
+04:17
+So researchers who study autonomous systems are collaborating with philosophers to address the complex problem of programming ethics into machines, which goes to show that even hypothetical dilemmas can wind up on a collision course with the real world
