@@ -63,8 +63,7 @@ def testLinearRegression(X):
         ax1.scatter(X.iloc[:,i].values, y, color=colors[i%6])
         ax1.set_xlabel('X')
         ax1.set_ylabel('y')
-        fig1.savefig('LR_initial_plot.png')
-
+      
     # visualise training data set results
         X_train_i= np.array(X_train.iloc[:,i])
         X_test_i= np.array(X_test.iloc[:,i])
@@ -73,18 +72,14 @@ def testLinearRegression(X):
         ax2.plot(X_train, regr.predict(X_train), color='red')
         ax2.set_xlabel('X')
         ax2.set_ylabel('y')
-        fig2.savefig('LR_train_plot.png')
         # visualise test data set results
         fig3, ax3 = plt.subplots()
         ax3.scatter(X_test_i, y_test, color='blue')
         ax3.plot(X_test, regr.predict(X_test), color='red')
         ax3.set_xlabel('X')
         ax3.set_ylabel('y')
-        fig3.savefig('LR_test_plot.png')
-
-
-        
-
+        plt.show()
+       
 
 # Visualising results: Training set
     #plt.scatter(X_train, y_train)
@@ -117,7 +112,7 @@ def testLinearRegression(X):
           % r2_score(y_test, Y_pred))
 
 # The accuracy of our model
-    print('Coefficient of determination: %.8f'
+    print('Regession score: %.8f'
           % regr.score(X, y))
     
 
@@ -136,7 +131,7 @@ testLinearRegression(X)
 
 #repeating the same analysis without longitude, latitude and zipcode which can be easily ignored
 X = houseprice_data[houseprice_data.columns.difference(['long','lat','zipcode'])]
-#testLinearRegression(X)
+testLinearRegression(X)
 print(X)
 
 
