@@ -43,7 +43,7 @@ print(houseprice_data.isnull().sum()) #result shows no missing values
 #Check the structure of dataset
 print(houseprice_data.dtypes)
 
-#visualising the correlationamong various columns of the dataset
+#visualising the correlation among various columns of the dataset
 plt.figure(figsize= (10,10), dpi=100)
 sns.heatmap(houseprice_data.corr())
 

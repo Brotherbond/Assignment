@@ -11,6 +11,9 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import matplotlib.pyplot as plt # MATLAB-like way of plotting
 import seaborn as sns
 from scipy.optimize import minimize
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
+
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -49,7 +52,8 @@ Y = nba_rookie_data.iloc[:, [-1]].values
 
 # Split dataset into train and test set
 from sklearn.model_selection import train_test_split
-X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.40,random_state=0)
+X_train, X_test, Y_train, Y_test = train_test_split(X,Y,test_size=0.20,random_state=0)
+#increasing random state reduces the accuracy of naive bayes and a large train dataset gives higher accuracy
 
 # Feature Scaling
 from sklearn.preprocessing import StandardScaler
@@ -58,7 +62,7 @@ X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
 
-
+#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 # Fitting Logistic Regression to Training set
 from sklearn.linear_model import LogisticRegression
 classifier = LogisticRegression(random_state=0, solver='lbfgs')
@@ -70,16 +74,14 @@ Y_pred_lr = classifier.predict(X_test)
 var_prob = classifier.predict_proba(X_test)
 var_prob[0, :]
 
-# Confusion Matrix
-from sklearn.metrics import confusion_matrix
+# Checking Confusion Matrix and accuracy of the model
 cm_lr = confusion_matrix(Y_test, Y_pred_lr)
-
-from sklearn.metrics import accuracy_score
 print(accuracy_score(Y_test,Y_pred_lr))
 
 
 
 
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 # Fitting Naive Bayes Algorithm to Training set
 from sklearn.naive_bayes import GaussianNB
 classifier = GaussianNB()
@@ -88,14 +90,12 @@ classifier.fit(X_train, Y_train)
 # Predicting Test set results
 Y_pred_nb = classifier.predict(X_test)
 
-# Confusion Matrix
-from sklearn.metrics import confusion_matrix
-cm_nb = confusion_matrix(Y_test, Y_pred_nb)
 
-from sklearn.metrics import accuracy_score
+# Checking Confusion Matrix and accuracy of the model
+cm_nb = confusion_matrix(Y_test, Y_pred_nb)
 print(accuracy_score(Y_test,Y_pred_nb))
 
-
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
 
 
 # Using Neural network to  Dataset
