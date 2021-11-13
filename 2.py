@@ -3,7 +3,7 @@
 """
 Created on Tue Nov  5 21:18:13 2021
 
-@author: Somade Moshood
+@author: Ehinmitan Kehinde O.
 """
 
 import numpy as np # linear algebra
